@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif, monospace;
+}
+
+:root {
+  --animation: 500ms;
+}
+
+.timeline {
+  position: relative;
+  height: 5px;
+  width: 80%;
+  background: #eee;
+  border-radius: 100px;
+  margin: 150px auto 0 auto;
+}
+.timeline .info-up, .timeline .info-down {
+  position: absolute;
+}
+.timeline .info-up:hover .dot, .timeline .info-down:hover .dot {
+  transform: scale(1.1);
+  transition: var(--animation) all;
+  border: 2px solid white;
+}
+.timeline .info-up:hover .time, .timeline .info-down:hover .time {
+  bottom: -20px;
+  transition: var(--animation) all;
+  opacity: 1;
+}
+.timeline .dot {
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  border-radius: 999em;
+  border: 5px solid #fff;
+}
+.timeline .info-up .panel, .timeline .info-down .panel {
+  color: #fff;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.timeline .info-up {
+  top: -7px;
+}
+.timeline .info-up .panel {
+  top: 40px;
+}
+.timeline .info-down {
+  top: -7px;
+}
+.timeline .info-down .panel {
+  top: -80px;
+}
+.timeline .panel {
+  position: absolute;
+  padding: 15px 20px;
+  white-space: nowrap;
+  border-radius: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+}
+.timeline .panel::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.timeline .info-down .panel::after {
+  background: inherit;
+  -webkit-clip-path: polygon(100% 0, 0 0, 50% 100%);
+          clip-path: polygon(100% 0, 0 0, 50% 100%);
+  top: 99%;
+}
+.timeline .info-up .panel::after {
+  -webkit-clip-path: polygon(100% 100%, 0 100%, 50% 0);
+          clip-path: polygon(100% 100%, 0 100%, 50% 0);
+  background: inherit;
+  bottom: 99%;
+}
+.timeline .time {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  bottom: 0px;
+  transition: var(--animation) all;
+  z-index: -1;
+  opacity: 0;
+  font-size: 11px;
+}/*# sourceMappingURL=App.css.map */

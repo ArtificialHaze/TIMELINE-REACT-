@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif, monospace;
+}
+
+:root {
+  --animation: 500ms;
+}
+
+.timeline {
+  position: relative;
+  height: 5px;
+  width: 80%;
+  background: #eee;
+  border-radius: 100px;
+  margin: 150px auto 0 auto;
+
+  & .info-up,
+  & .info-down {
+    position: absolute;
+
+    &:hover {
+      .dot {
+        transform: scale(1.1);
+        transition: var(--animation) all;
+        border: 2px solid white;
+      }
+
+      .time {
+        bottom: -20px;
+        transition: var(--animation) all;
+        opacity: 1;
+      }
+    }
+  }
+
+  & .dot {
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    border-radius: 999em;
+    border: 5px solid #fff;
+  }
+
+  & .info-up .panel,
+  & .info-down .panel {
+    color: #fff;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  & .info-up {
+    top: -7px;
+  }
+
+  & .info-up .panel {
+    top: 40px;
+  }
+
+  & .info-down {
+    top: -7px;
+  }
+
+  & .info-down .panel {
+    top: -80px;
+  }
+
+  & .panel {
+    position: absolute;
+    padding: 15px 20px;
+    white-space: nowrap;
+    border-radius: 7px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  & .info-down .panel::after {
+    background: inherit;
+    clip-path: polygon(100% 0, 0 0, 50% 100%);
+    top: 99%;
+  }
+
+  & .info-up .panel::after {
+    clip-path: polygon(100% 100%, 0 100%, 50% 0);
+    background: inherit;
+    bottom: 99%;
+  }
+
+  & .time {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    bottom: 0px;
+    transition: var(--animation) all;
+    z-index: -1;
+    opacity: 0;
+    font-size: 11px;
+  }
+}
